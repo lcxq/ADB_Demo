@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="reddit_new" uuid="9d015675-e6e0-4a31-8b29-3aa05e333661">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:E:\高级数据库\MyDemo\reddit_new.sqlite</jdbc-url>
+    </data-source>
+  </component>
+</project>
