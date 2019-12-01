@@ -46,8 +46,21 @@ def getWordCloud(request):
     if reddit_id == "" and subreddit == "" and author == "":
         messages.warning(request, "Please input something!")
         return render(request, "query.html")
-    # 模糊查找
-    sql_query = "select body from reddit where subreddit LIKE '%"+str(subreddit)+"%' and id like '%"+str(reddit_id)+"%' and author like '%"+str(author)+"%'"
+    # 查找
+    if reddit_id != "" and subreddit == "" and author == "":
+        sql_query = "select body from reddit where id = '%s'"%(reddit_id)
+    elif reddit_id == "" and subreddit != "" and author == "":
+        sql_query = "select body from reddit where subreddit = '%s'"%(subreddit)
+    elif reddit_id == "" and subreddit == "" and author != "":
+        sql_query = "select body from reddit where author = '%s'"%(author)
+    elif reddit_id != "" and subreddit != "" and author == "":
+        sql_query = "select body from reddit where subreddit = '%s' and id = '%s'"%(subreddit,reddit_id)
+    elif reddit_id == "" and subreddit != "" and author != "":
+        sql_query = "select body from reddit where subreddit = '%s' and author = '%s'"%(subreddit,author)
+    elif reddit_id != "" and subreddit == "" and author != "":
+        sql_query = "select body from reddit where id = '%s' and author = '%s'"%(reddit_id,author)
+    elif reddit_id != "" and subreddit != "" and author != "":
+        sql_query = "select body from reddit where id = '%s' and author = '%s' and subreddit = '%s'"%(reddit_id,author,subreddit)
     df = pd.read_sql(sql_query, sql_conn)
     # 文本生成
     text = "".join(list(df['body'])).lower()
@@ -105,17 +118,37 @@ def query(request):
     reddit_id = request.GET['id']
     subreddit = request.GET['subreddit']
     author = request.GET['author']
-    if reddit_id == "" and subreddit == "" and author == "":
-        reddit_list = {}
-    else:
-        reddit_list = models.Reddit.objects\
-            .filter(id__icontains=reddit_id)\
-            .filter(subreddit__icontains=subreddit)\
-            .filter(author__icontains=author)[:1000]
-    # if reddit_list.__len__() == 1000:
-    #     messages.warning(request, "Only the first 1000 records will be displayed!")
-    paginator = Paginator(reddit_list, 20)
     page = request.GET.get('page')
+    if reddit_id == "" and subreddit == "" and author == "":
+        return render(request, "query.html")
+    else:
+        if reddit_id != "" and subreddit == "" and author == "":
+            reddit_list = models.Reddit.objects\
+                .filter(id=reddit_id)
+        elif reddit_id == "" and subreddit != "" and author == "":
+            reddit_list = models.Reddit.objects\
+                .filter(subreddit=subreddit)        
+        elif reddit_id == "" and subreddit == "" and author != "":
+            reddit_list = models.Reddit.objects\
+                .filter(author=author)
+        elif reddit_id != "" and subreddit != "" and author == "":
+            reddit_list = models.Reddit.objects\
+                .filter(id=reddit_id)\
+                .filter(subreddit=subreddit)
+        elif reddit_id == "" and subreddit != "" and author != "":
+            reddit_list = models.Reddit.objects\
+                .filter(subreddit=subreddit)\
+                .filter(author=author)
+        elif reddit_id != "" and subreddit == "" and author != "":
+            reddit_list = models.Reddit.objects\
+                .filter(id=reddit_id)\
+                .filter(author=author)
+        elif reddit_id != "" and subreddit != "" and author != "":
+            reddit_list = models.Reddit.objects\
+                .filter(id=reddit_id)\
+                .filter(author=author)\
+                .filter(subreddit=subreddit)
+    paginator = Paginator(reddit_list, 50)
     try:
         reddit_list_paginate = paginator.page(page)
     except PageNotAnInteger:

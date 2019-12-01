@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be8a8355-1f3b-41f7-8d8d-69ba73158ee2" name="默认更改列表" comment="" />
+    <list default="true" id="be8a8355-1f3b-41f7-8d8d-69ba73158ee2" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/app/templates/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/query.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/query.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +43,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Tv0hkkpm2zGLTZDBtjrRGbpCnz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -110,10 +119,22 @@
       <workItem from="1574325388034" duration="11642000" />
       <workItem from="1574393202778" duration="14329000" />
       <workItem from="1574492491396" duration="51240000" />
+      <workItem from="1575182624083" duration="700000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

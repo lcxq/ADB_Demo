@@ -51,15 +51,15 @@
         </div>
         <div class="text-center">
             <div class="invisible">空行</div>
-            <button class="btn btn-primary" type="submit" value="query" onclick="myQuery()">搜索</button>
+            <button class="btn btn-primary" type="submit" value="query" onclick="myQuery()">Query</button>
             <a href="/insert_index">
-                <button class="btn btn-success" type="button" value="add">添加</button>
+                <button class="btn btn-success" type="button" value="add">Insert</button>
             </a>
             <a href="/update_index">
-                <button class="btn btn-warning" type="button" value="update">修改</button>
+                <button class="btn btn-warning" type="button" value="update">Update</button>
             </a>
-            <button class="btn btn-danger" type="submit" value="delete" onclick="myDelete()">删除</button>
-            <button class="btn btn-default" type="submit" value="WordCloud" onclick="myWordCloud()">词云</button>
+            <button class="btn btn-danger" type="submit" value="delete" onclick="myDelete()">Delete</button>
+            <button class="btn btn-default" type="submit" value="WordCloud" onclick="myWordCloud()">WordCloud</button>
             <button class="btn btn-info" type="submit" onclick="returnMain()">
                 <span class="glyphicon glyphicon-refresh"></span>
             </button>
@@ -101,15 +101,15 @@
         {% endif %}
         <div class="text-center">
             <p>
-                <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page=1">首页</a>
+                <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page=1">First Page</a>
                 {% if reddit_list.has_previous %}
-                    <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page={{ reddit_list.previous_page_number }}">上一页</a>
+                    <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page={{ reddit_list.previous_page_number }}">Previous</a>
                 {% endif %}
-                    第{{ reddit_list.number }}页 | 共{{ reddit_list.paginator.num_pages }}页
+                    {{ reddit_list.number }} | {{ reddit_list.paginator.num_pages }}
                 {% if reddit_list.has_next %}
-                    <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page={{ reddit_list.next_page_number }}">下一页</a>
+                    <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page={{ reddit_list.next_page_number }}">Next</a>
                 {% endif %}
-                <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page={{ reddit_list.paginator.num_pages }}">尾页</a>
+                <a href="?id={{ reddit_id }}&subreddit={{ subreddit }}&author={{ author }}&page={{ reddit_list.paginator.num_pages }}">Last Page</a>
             </p>
         </div>
     </div>
