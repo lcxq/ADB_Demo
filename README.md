@@ -1,0 +1,2 @@
+# ADB_Demo
+高级数据库课程PJDemo，Django+Boostrap+Sqlite实现对Reddit评论数据集的增删改査功能，以及根据评论文本生成词云
